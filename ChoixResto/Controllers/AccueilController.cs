@@ -14,5 +14,15 @@ namespace ChoixResto.Controllers
         {
             return View();
         }
+
+        /*public ActionResult Index(int selektor)
+        {
+            if (selektor == 0)
+                return new RestaurantController().Index();
+            if (selektor == 1)
+                return new RestaurantController().CreerRestaurant();
+            else
+                return View("Error");
+        }*/
     }
 }
