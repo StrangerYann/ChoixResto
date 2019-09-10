@@ -1,0 +1,46 @@
+endView@Valid /// /// /// -------
+
+--- --- --- --- --- --- ---
+
+//AccueilViewModels.cs
+    public class AccueilViewModel
+    {
+        public string Message { get; set; }
+        public DateTime Date { get; set; }
+        public Models.Resto Resto { get; set; }
+        //public List<Models.Resto> ListeDesRestos { get; set; }
+    }
+
+--- --- --- --- --- --- ---
+
+//Index.cshtml
+    <div>
+        Je suis la vue index
+    </div>
+    <input type="text" id="nom" value="@Model.Resto.Nom" />
+    <input type="text" id="telephone" value="@Model.Resto.Telephone" />
+    <input type="submit" value="Envoyer" />
+
+--- --- --- --- --- --- ---
+
+//AccueilController.cs
+            AccueilViewModel vm = new AccueilViewModel
+            {
+                /*
+                Message = "Bonjour depuis le <span style=\"color:red\">contrôleur</span>",
+                Date = DateTime.Now,
+                ListeDesRestos = new List<Resto>
+                {
+                    new Resto { Nom = "Resto pinambour", Telephone = "1234" },
+                    new Resto { Nom = "Resto tologie", Telephone = "1234" },
+                    new Resto { Nom = "Resto ride", Telephone = "5678" },
+                    new Resto { Nom = "Resto toro", Telephone = "555" },
+                }
+                */
+
+                Message = "Bonjour depuis le contrôleur",
+                Date = DateTime.Now,
+                Resto = new Resto { Nom = "La bonne fourchette", Telephone = "1234" }
+
+            };
+            return View(vm);

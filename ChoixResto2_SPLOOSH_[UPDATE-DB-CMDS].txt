@@ -1,0 +1,8 @@
+https://stackoverflow.com/questions/44202531/dataannotations-issue
+
+1) {f} --- Tools -> Nuget Package Manager -> Package Manager Console
+2) choose the required project from the dropdown
+3) [_] --- "Enable-Migrations"
+4) [_] --- "Add-Migration"
+5) type migration name
+6) [_] --- "Update-Database"
