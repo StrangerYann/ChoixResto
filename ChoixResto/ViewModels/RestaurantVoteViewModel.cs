@@ -13,7 +13,6 @@ namespace ChoixResto.ViewModels
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             // à faire !
-            return default(IEnumerable<ValidationResult>);
         }
     }
 }
