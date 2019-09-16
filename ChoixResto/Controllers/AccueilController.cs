@@ -14,15 +14,13 @@ namespace ChoixResto.Controllers
         {
             return View();
         }
-
-        /*public ActionResult Index(int selektor)
+        
+        [HttpPost]
+        public ActionResult Index(int Test)
         {
-            if (selektor == 0)
-                return new RestaurantController().Index();
-            if (selektor == 1)
-                return new RestaurantController().CreerRestaurant();
-            else
-                return View("Error");
-        }*/
+            Dal dal = new Dal();
+            int newIndex=dal.CreerUnSondage();
+            return new VoteController().Index(newIndex);
+        }
     }
 }

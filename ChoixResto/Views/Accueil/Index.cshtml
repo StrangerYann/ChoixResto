@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ChoixResto.Models.Sondage>
+@{
     Layout = null;
 }
 
@@ -12,10 +13,12 @@
 <body>
     <div>Prêts à choisir un restaurant ?</div>
     <br />
-    <input type="submit" value="Créer un sondage" />
-    <ul>
-        <li>@Html.ActionLink("Ajouter un restaurant", "CreerRestaurant", "Restaurant")</li>
-        <li>@Html.ActionLink("Modifier les restaurants", "Index", "Restaurant")</li>
-    </ul>
-</body>
+    <input type="submit" value="Créer un sondage" method="post"
+           //onclick="location.href='@Url.Action("Index", "Accueil", "test")'" />
+        onclick="@Html.ActionLink("Créer un sondage", "Index", "Vote")")
+        <ul>
+            <li>@Html.ActionLink("Ajouter un restaurant", "CreerRestaurant", "Restaurant")</li>
+            <li>@Html.ActionLink("Modifier les restaurants", "Index", "Restaurant")</li>
+        </ul>
+    </body>
 </html>

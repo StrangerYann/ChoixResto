@@ -79,7 +79,7 @@ namespace ChoixResto.Models
             {
                 case "Chrome":
                     return CreeOuRecupere("Nico", "1234");
-                case "IE":
+                case "InternetExplorer":
                     return CreeOuRecupere("Jérémie", "1234");
                 case "Firefox":
                     return CreeOuRecupere("Delphine", "1234");

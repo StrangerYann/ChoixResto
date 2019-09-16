@@ -167,6 +167,7 @@
     <Content Include="Views\Restaurant\CreerRestaurant.cshtml" />
     <Content Include="Views\Vote\Index.cshtml" />
     <Content Include="Views\Vote\AfficherResultat.cshtml" />
+    <Content Include="Views\Vote\browserCheck.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

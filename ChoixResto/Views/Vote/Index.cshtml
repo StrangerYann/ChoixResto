@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ChoixResto.Models.Resto>
+@{
     Layout = null;
 }
 
@@ -10,7 +11,17 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
-    </div>
+    <div>Cochez les restaurants où vous voulez bien aller. Attention, le vote est définitif !</div>
+    <br />
+    @foreach (var resto in Model)
+    {
+        <div>
+            <input id=resto.Id type="checkbox" />
+            @resto.Nom
+            @("(" + resto.Telephone + ")")
+        </div>
+    }
+    <br />
+    <input type="submit" value="Valider le choix" />
 </body>
 </html>
