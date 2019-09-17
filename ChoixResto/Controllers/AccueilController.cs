@@ -10,17 +10,28 @@ namespace ChoixResto.Controllers
 {
     public class AccueilController : Controller
     {
+        private IDal dal;
+
+        public AccueilController() : this(new Dal())
+        {
+        }
+
+        public AccueilController(IDal dalIoc)
+        {
+            dal = dalIoc;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
-        
+
         [HttpPost]
-        public ActionResult Index(int Test)
+        [ActionName("Index")]
+        public ActionResult IndexPost()
         {
-            Dal dal = new Dal();
-            int newIndex=dal.CreerUnSondage();
-            return new VoteController().Index(newIndex);
+            int idSondage = dal.CreerUnSondage();
+            return RedirectToAction("Index", "Vote", new { id = idSondage });
         }
     }
 }

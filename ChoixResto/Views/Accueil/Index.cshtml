@@ -11,14 +11,14 @@
     <title>Index</title>
 </head>
 <body>
-    <div>Prêts à choisir un restaurant ?</div>
-    <br />
-    <input type="submit" value="Créer un sondage" method="post"
-           //onclick="location.href='@Url.Action("Index", "Accueil", "test")'" />
-        onclick="@Html.ActionLink("Créer un sondage", "Index", "Vote")")
-        <ul>
-            <li>@Html.ActionLink("Ajouter un restaurant", "CreerRestaurant", "Restaurant")</li>
-            <li>@Html.ActionLink("Modifier les restaurants", "Index", "Restaurant")</li>
-        </ul>
-    </body>
+    <p>Prêts à choisir un restaurant ?</p>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Créer un sondage" />
+    }
+    <ul>
+        <li>@Html.ActionLink("Ajouter un restaurant", "CreerRestaurant", "Restaurant")</li>
+        <li>@Html.ActionLink("Modifier les restaurants", "Index", "Restaurant")</li>
+    </ul>
+</body>
 </html>
