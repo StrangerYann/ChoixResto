@@ -1,4 +1,5 @@
 ﻿using ChoixResto.Models;
+using ChoixResto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,41 +10,53 @@ namespace ChoixResto.Controllers
 {
     public class VoteController : Controller
     {
-        // GET: Vote
-        public ActionResult browserCheck()
-        {
-            var browserID = Request.Browser.Browser;
-            ViewData["browserID"] = browserID;
-            Dal dal = new Dal();
-            var otherInfo = dal.ObtenirUtilisateur(browserID);
-            ViewData["infoName"] = otherInfo.Prenom;
-            ViewData["infoMDP"] = otherInfo.MotDePasse;
+        private IDal dal;
 
-            return View();
+        public VoteController() : this(new Dal())
+        {
         }
 
-        public ActionResult Index(int? id)
+        public VoteController(IDal dalIoc)
         {
-            if (id.HasValue)
+            dal = dalIoc;
+        }
+
+        public ActionResult Index(int id)
+        {
+            RestaurantVoteViewModel viewModel = new RestaurantVoteViewModel
             {
-                Dal dal = new Dal();
-                List<Resto> listeDesRestaurants = dal.ObtientTousLesRestaurants();
-                return View(listeDesRestaurants);
+                ListeDesResto = dal.ObtientTousLesRestaurants().Select(r => new RestaurantCheckBoxViewModel { Id = r.Id, NomEtTelephone = string.Format("{0} ({1})", r.Nom, r.Telephone) }).ToList()
+            };
+            if (dal.ADejaVote(id, Request.Browser.Browser))
+            {
+                return RedirectToAction("AfficheResultat", new { id = id });
             }
-            else
-                return HttpNotFound();
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Index()
+        public ActionResult Index(RestaurantVoteViewModel viewModel, int id)
         {
-            Dal dal = new Dal();
+            if (!ModelState.IsValid)
+                return View(viewModel);
+            Utilisateur utilisateur = dal.ObtenirUtilisateur(Request.Browser.Browser);
+            if (utilisateur == null)
+                return new HttpUnauthorizedResult();
+            foreach (RestaurantCheckBoxViewModel restaurantCheckBoxViewModel in viewModel.ListeDesResto.Where(r => r.EstSelectionne))
+            {
+                dal.AjouterVote(id, restaurantCheckBoxViewModel.Id, utilisateur.Id);
+            }
+            return RedirectToAction("AfficheResultat", new { id = id });
+        }
 
-            dal.CreerUnSondage();
-
-            return RedirectToAction("Index");
-
-
+        public ActionResult AfficheResultat(int id)
+        {
+            if (!dal.ADejaVote(id, Request.Browser.Browser))
+            {
+                return RedirectToAction("Index", new { id = id });
+            }
+            List<Resultats> resultats = dal.ObtenirLesResultats(id);
+            return View(resultats.OrderByDescending(r => r.NombreDeVotes).ToList());
         }
     }
 }
