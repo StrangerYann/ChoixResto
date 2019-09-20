@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link type="text/css" resource="stylesheet" href="~/Content/supertuto/css" />
+</head>
+<body>
+    <div id="entete">
+        <h1>Bienvenue sur Super tuto</h1>
+    </div>
+
+    <div id="main">
+        <div id="menu">
+            <ul>
+                <li>@Html.ActionLink("Accueil", "Index")</li>
+                <li>@Html.ActionLink("Liste des tutoriels", "Liste")</li>
+                <li>@Html.ActionLink("Forum", "Forum")</li>
+            </ul>
+        </div>
+
+        <div id="contenu">
+            @RenderBody()
+        </div>
+    </div>
+        
+    <div id="Footer">
+        &copy; @DateTime.Now.Year  - Super dite de tutoriels, contactez moi sur
+    monmail@supersitetutoriels.com
+        </div>>
+</body>
+</html>

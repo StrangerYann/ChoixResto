@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Content\suprertuto.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -139,6 +140,10 @@
     <Compile Include="Migrations\201909041508575_TP2_setp.Designer.cs">
       <DependentUpon>201909041508575_TP2_setp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909191325256_Miguel-show.cs" />
+    <Compile Include="Migrations\201909191325256_Miguel-show.Designer.cs">
+      <DependentUpon>201909191325256_Miguel-show.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BddContext.cs" />
     <Compile Include="Models\Dal.cs" />
@@ -166,8 +171,10 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Restaurant\CreerRestaurant.cshtml" />
     <Content Include="Views\Vote\Index.cshtml" />
-    <Content Include="Views\Vote\AfficherResultat.cshtml" />
+    <Content Include="Views\Vote\AfficheResultat.cshtml" />
     <Content Include="Views\Vote\browserCheck.cshtml" />
+    <Content Include="Views\Shared\LayoutDuSite.cshtml" />
+    <Content Include="Views\Accueil\Liste.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909041508575_TP2_setp.resx">
       <DependentUpon>201909041508575_TP2_setp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909191325256_Miguel-show.resx">
+      <DependentUpon>201909191325256_Miguel-show.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
