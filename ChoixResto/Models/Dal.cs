@@ -63,16 +63,15 @@ namespace ChoixResto.Models
             return bdd.Utilisateurs.FirstOrDefault(u => u.Id == id);
         }
 
-        /*public Utilisateur ObtenirUtilisateur(string idStr)
+        public Utilisateur ObtenirUtilisateur(string idStr)
         {
             int id;
             if (int.TryParse(idStr, out id))
                 return ObtenirUtilisateur(id);
             return null;
-        }*/
-
-        /// /// /// /// /// /// ///
-
+        }
+        
+        /*TP2@bidouille
         public Utilisateur ObtenirUtilisateur(string idStr)
         {
             switch (idStr)
@@ -86,7 +85,7 @@ namespace ChoixResto.Models
                 default:
                     return CreeOuRecupere("Timéo", "1234");
             }
-        }
+        }*/
 
         private Utilisateur CreeOuRecupere(string nom, string motDePasse)
         {
@@ -98,8 +97,6 @@ namespace ChoixResto.Models
             }
             return utilisateur;
         }
-
-        /// /// /// /// /// /// ///
 
         public int CreerUnSondage()
         {
@@ -138,7 +135,7 @@ namespace ChoixResto.Models
             return resultats;
         }
 
-        /*public bool ADejaVote(int idSondage, string idStr)
+        public bool ADejaVote(int idSondage, string idStr)
         {
             int id;
             if (int.TryParse(idStr, out id))
@@ -149,10 +146,9 @@ namespace ChoixResto.Models
                 return sondage.Votes.Any(v => v.Utilisateur != null && v.Utilisateur.Id == id);
             }
             return false;
-        }*/
+        }
 
-        /// /// /// /// /// /// ///
-
+        /*TP2@bidouille
         public bool ADejaVote(int idSondage, string idStr)
         {
             Utilisateur utilisateur = ObtenirUtilisateur(idStr);
@@ -164,9 +160,7 @@ namespace ChoixResto.Models
                 return sondage.Votes.Any(v => v.Utilisateur != null && v.Utilisateur.Id == utilisateur.Id);
             }
             return false;
-        }
-
-        /// /// /// /// /// /// ///
+        }*/
 
         public void Dispose()
         {

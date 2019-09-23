@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ChoixResto.Controllers
 {
+    [Authorize]
     public class VoteController : Controller
     {
         private IDal dal;
@@ -27,7 +28,7 @@ namespace ChoixResto.Controllers
             {
                 ListeDesResto = dal.ObtientTousLesRestaurants().Select(r => new RestaurantCheckBoxViewModel { Id = r.Id, NomEtTelephone = string.Format("{0} ({1})", r.Nom, r.Telephone) }).ToList()
             };
-            if (dal.ADejaVote(id, Request.Browser.Browser))
+            if (dal.ADejaVote(id, HttpContext.User.Identity.Name))
             {
                 return RedirectToAction("AfficheResultat", new { id = id });
             }
@@ -39,7 +40,7 @@ namespace ChoixResto.Controllers
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
-            Utilisateur utilisateur = dal.ObtenirUtilisateur(Request.Browser.Browser);
+            Utilisateur utilisateur = dal.ObtenirUtilisateur(HttpContext.User.Identity.Name);
             if (utilisateur == null)
                 return new HttpUnauthorizedResult();
             foreach (RestaurantCheckBoxViewModel restaurantCheckBoxViewModel in viewModel.ListeDesResto.Where(r => r.EstSelectionne))
@@ -49,9 +50,10 @@ namespace ChoixResto.Controllers
             return RedirectToAction("AfficheResultat", new { id = id });
         }
 
+        [AllowAnonymous]
         public ActionResult AfficheResultat(int id)
         {
-            if (!dal.ADejaVote(id, Request.Browser.Browser))
+            if (!dal.ADejaVote(id, HttpContext.User.Identity.Name))
             {
                 return RedirectToAction("Index", new { id = id });
             }

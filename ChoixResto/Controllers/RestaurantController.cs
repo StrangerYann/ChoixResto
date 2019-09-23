@@ -33,6 +33,11 @@ namespace ChoixResto.Controllers
         }
 
         [HttpPost]
+        /*
+        [Authorize(Roles="Administrateur")]
+        https://openclassrooms.com/en/courses/1730206-apprenez-asp-net-mvc/2098931-gerer-l-authentification
+        système de rôle ~ mécanisme gestion des rôles ASP.NET ~ changer @Authorize @param input
+        */
         public ActionResult CreerRestaurant(Resto resto)
         {
             if (dal.RestaurantExiste(resto.Nom))

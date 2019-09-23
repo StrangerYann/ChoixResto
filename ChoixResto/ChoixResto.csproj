@@ -111,6 +111,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccueilController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +160,7 @@
     <Compile Include="ViewModels\AccueilViewModel.cs" />
     <Compile Include="ViewModels\RestaurantCheckBoxViewModel.cs" />
     <Compile Include="ViewModels\RestaurantVoteViewModel.cs" />
+    <Compile Include="ViewModels\UtilisateurViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -175,6 +177,8 @@
     <Content Include="Views\Vote\browserCheck.cshtml" />
     <Content Include="Views\Shared\LayoutDuSite.cshtml" />
     <Content Include="Views\Accueil\Liste.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\CreerCompte.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
